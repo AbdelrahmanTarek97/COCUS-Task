@@ -3,7 +3,7 @@
 ## Details to keep in mind while using/assessing the app
 
 - The app makes use of caching (Cache has a transient memory of around 60 seconds, so repeated requests within the same minute do not hit the rate-limit).
-- The app has pagination on 2 levels (Repos per page, and branches shown for each repo)
+- The app has pagination on 2 levels (Max Repos per page, and Max branches shown for each repo)
 - The app has extensive logging to keep track of all invoked functions.
 - Logging is suppressed during tests so not to disrupt mocha's test logs.
 - I know you've been looking at a screen all day so it makes sense to make things easier for you, the app makes use of swagger so you can easily try it out!
