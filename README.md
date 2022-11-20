@@ -39,13 +39,19 @@
 ```
 
 - Not Found
-  `{ "status": "404", "message": "..." }`
+```javascript
+{ "status": "404", "message": "..." }
+```
 
 - Github's Rate Limit Exceeded
-  `{ "status": "429", "message": "..." }`
+```javascript
+{ "status": "429", "message": "..." }
+```
 
 - Unexpected Errors
-  `{ "status": "500", "message": "..." }`
+```javascript
+{ "status": "500", "message": "..." }
+```
 
 ## Run the app using
 
