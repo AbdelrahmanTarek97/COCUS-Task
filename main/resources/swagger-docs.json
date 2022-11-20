@@ -1,0 +1,159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample COCUS-Task server.",
+    "version": "1.0.6",
+    "title": "COCUS-Task",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": { "email": "apiteam@swagger.io" },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000/",
+  "basePath": "",
+  "tags": [],
+  "schemes": ["http"],
+  "paths": {
+    "/github/{username}/repositories": {
+      "get": {
+        "tags": [],
+        "summary": "Gets a user's Github repositories along with branches of each repository and last commits data for each branch",
+        "description": "",
+        "operationId": "get-user-repositories",
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "Username of Github user.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination parameter, default is 1 if not provided or if provided with errors (for example: -4).",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "reposPerPage",
+            "in": "query",
+            "description": "Max number of repos per page, pagination parameter for the repositories, default is 10 if not provided or if provided with errors (for example: -4)",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "branchesPerRepo",
+            "in": "query",
+            "description": "Max number of branches shown for each repo, default is 5 if not provided or if provided with errors (for example: -4)",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pagination": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "repositoriesCount": {
+                      "type": "integer"
+                    },
+                    "maxBranchesShownPerRepository": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "username": {
+                  "type": "string",
+                  "required": true
+                },
+                "repositories": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "branches": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "lastCommitSha": {
+                              "type": "string",
+                              "required": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Wrong 'Accept' header is supplied.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Username not found.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Exceeded github's rate-limit.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  }
+}

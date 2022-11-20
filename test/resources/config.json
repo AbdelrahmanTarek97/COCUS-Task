@@ -1,0 +1,27 @@
+{
+  "MOCKING_BASE_URL": "https://api.github.com",
+  "MOCKING_URL_GET_REPOS_OK": {
+    "path": "/users/testUserNameSuccess/repos",
+    "status": 200
+  },
+  "MOCKING_URL_GET_REPOS_NOT_FOUND": {
+    "path": "/users/testUserNameNotFound/repos",
+    "status": 404
+  },
+  "MOCKING_URL_GET_REPOS_RATE_LIMIT_EXCEEDED": {
+    "path": "/users/testUserNameRateLimitExceeded/repos",
+    "status": 403
+  },
+  "MOCKING_URL_GET_BRANCHES_OK": {
+    "path": "/repos/testUserNameSuccess/testRepoSuccess/branches",
+    "status": 200
+  },
+  "MOCKING_URL_GET_BRANCHES_NOT_FOUND": {
+    "path": "/repos/testUserNameNotFound/testRepoNotFound/branches",
+    "status": 404
+  },
+  "MOCKING_URL_GET_BRANCHES_RATE_LIMIT_EXCEEDED": {
+    "path": "/repos/testUserNameRateLimitExceeded/testRepoRateLimitExceeded/branches",
+    "status": 403
+  }
+}
