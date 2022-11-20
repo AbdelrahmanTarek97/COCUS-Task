@@ -38,19 +38,36 @@
 }
 ```
 
+- Wrong Accept Header Value
+```javascript
+{ 
+  "status": "406", 
+  "message": "Accept header can only be  application/json." 
+}
+```
+
 - Not Found
 ```javascript
-{ "status": "404", "message": "..." }
+{ 
+  "status": "404", 
+  "message": "This username does not exist" 
+}
 ```
 
 - Github's Rate Limit Exceeded
 ```javascript
-{ "status": "429", "message": "..." }
+{ 
+  "status": "429", 
+  "message": "Exceeded github's rate-limit. Please try again in a couple of minutes, the API needs to heal." 
+}
 ```
 
 - Unexpected Errors
 ```javascript
-{ "status": "500", "message": "..." }
+{ 
+  "status": "500", 
+  "message": "An internal server error occured." 
+}
 ```
 
 ## Run the app using
